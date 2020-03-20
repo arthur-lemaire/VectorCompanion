@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using VectorCompanion.Models;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace VectorCompanion.MobileAppService
 {
@@ -24,7 +25,6 @@ namespace VectorCompanion.MobileAppService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton<IItemRepository, ItemRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

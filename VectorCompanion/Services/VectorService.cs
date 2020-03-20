@@ -4,17 +4,8 @@ using Xamarin.Forms;
 
 namespace VectorCompanion.Services
 {
-    public class VectorService : ContentPage
+    public class VectorService
     {
-        public VectorService()
-        {
-            Content = new StackLayout
-            {
-                Children = {
-                    new Label { Text = "Hello ContentPage" }
-                }
-            };
-        }
     }
 }
 

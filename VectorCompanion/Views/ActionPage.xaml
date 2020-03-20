@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="VectorCompanion.Views.ActionPage">
+    <ContentPage.Content>
+        <StackLayout Margin="20,35,20,20">
+            <Label HorizontalTextAlignment="Center">Ask Vector to say something</Label>
+            <Entry x:Name="txtTextToSay"></Entry>
+            <Button x:Name="btnTextToSay" Text="Say the upside text" Clicked="OnButtonSayHelloClicked" BorderColor="#0C3582" BorderWidth="2"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
