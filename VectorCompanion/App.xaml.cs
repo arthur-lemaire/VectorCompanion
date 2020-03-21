@@ -12,6 +12,7 @@ namespace VectorCompanion
     public partial class App : Application
     {
         static VectorDatabase database;
+        static Vector Vector;
 
         public App()
         {
