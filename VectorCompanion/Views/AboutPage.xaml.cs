@@ -36,5 +36,12 @@ namespace VectorCompanion.Views
         {
             listVector.ItemsSource = await App.Database.GetItemsAsync();
         }
+
+        private void OnChangeSelectedVector(object sender, EventArgs e)
+        {
+            var picker = sender as Picker;
+            Application.Current.Properties["currentVector"] = (Vector)listVector.SelectedItem;
+
+        }
     }
 }

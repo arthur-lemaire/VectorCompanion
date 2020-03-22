@@ -8,7 +8,7 @@
         </StackLayout>
         <StackLayout Margin="20,35,20,20">
             <Label  HorizontalTextAlignment="Center" FontSize="Header">Choose the Active Vector</Label>
-            <Picker x:Name="listVector" Title="Select a Vector" ItemDisplayBinding="{Binding Name}"/>
+            <Picker x:Name="listVector" Title="Select a Vector" ItemDisplayBinding="{Binding Name}" SelectedIndexChanged="OnChangeSelectedVector"/>
             <Button Text="Remove Vector" BorderColor="#0C3582" BorderWidth="2" Clicked="OnRemoveVector"> </Button>
         </StackLayout>        
     </StackLayout>

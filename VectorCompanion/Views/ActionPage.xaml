@@ -4,7 +4,7 @@
         <StackLayout Margin="20,35,20,20">
             <Label HorizontalTextAlignment="Center">Ask Vector to say something</Label>
             <Entry x:Name="txtTextToSay"></Entry>
-            <Button x:Name="btnTextToSay" Text="Say the upside text" Clicked="OnButtonSayHelloClicked" BorderColor="#0C3582" BorderWidth="2"/>
+            <Button x:Name="btnTextToSay" Text="Say the upside text" Clicked="OnButtonSayTextClicked" BorderColor="#0C3582" BorderWidth="2"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
+using VectorCompanion.Models;
+using VectorCompanion.Services;
 using Xamarin.Forms;
 
 namespace VectorCompanion.Views
@@ -13,15 +15,14 @@ namespace VectorCompanion.Views
         {
             InitializeComponent();
         }
-        async void OnButtonSayHelloClicked(object senderObject, EventArgs e)
+        void OnButtonSayTextClicked(object senderObject, EventArgs e)
         {
             try
             {
-                Debug.WriteLine("ça passe");
-                var client = new HttpClient();
-                client.BaseAddress = new Uri("http://localhost:5000");
-                var textToSay = txtTextToSay.Text;
-                await client.GetAsync("/vector/Z5E2/message/"+textToSay);
+                
+                VectorApiService vectorApiService = new VectorApiService();
+                var currentVector = (Vector)Application.Current.Properties["currentVector"];
+                vectorApiService.SendTextToSay(currentVector, txtTextToSay.Text);
             }
             catch (Exception ex)
             {
