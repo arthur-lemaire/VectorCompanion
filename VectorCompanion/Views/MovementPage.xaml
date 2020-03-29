@@ -1,0 +1,13 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="VectorCompanion.Views.MovementPage">
+    <ContentPage.Content>
+        <StackLayout Margin="20,35,20,20">
+            <Button Text="Forward" BorderColor="#0C3582" BorderWidth="2" Pressed="OnButtonPressed"></Button>
+            <FlexLayout x:Name="stackMiddle" Direction="Row" AlignItems="Center" JustifyContent="SpaceAround" HorizontalOptions="FillAndExpand">
+                <Button Text="Left" BorderColor="#0C3582" BorderWidth="2" Padding="30" Pressed="OnButtonPressed"></Button>
+                <Button Text="Stop" BorderColor="#0C3582" BorderWidth="2" Padding="30" Pressed="OnButtonPressed"></Button>
+                <Button Text="Right" BorderColor="#0C3582" BorderWidth="2" Padding="30" Pressed="OnButtonPressed"></Button>
+            </FlexLayout>
+            <Button Text="Backward" BorderColor="#0C3582" BorderWidth="2" Pressed="OnButtonPressed"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

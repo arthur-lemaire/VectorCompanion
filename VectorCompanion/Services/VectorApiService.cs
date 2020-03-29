@@ -13,5 +13,11 @@ namespace VectorCompanion.Services
             client.BaseAddress = new Uri("http://localhost:5000");
             await client.GetAsync($"/vector/{vector.Name}/message/{message}");
         }
+        public async void Movement(Vector vector, int vitesse,string action)
+        {
+            var client = new HttpClient();
+            client.BaseAddress = new Uri("http://localhost:5000");
+            await client.GetAsync($"/vector/{vector.Name}/movement/{vitesse}/{action}");
+        }
     }
 }

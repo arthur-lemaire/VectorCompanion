@@ -13,7 +13,7 @@ namespace VectorCompanion.Controllers
     [Route("vector/{robotname}")]
     [ApiController]
     public class ItemController : ControllerBase
-    { 
+    {
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public string robotName(string robotname)
@@ -22,17 +22,18 @@ namespace VectorCompanion.Controllers
         }
         [HttpGet("message/{text}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async void textToShow(string text,string robotName)
+        public async void textToShow(string text, string robotName)
         {
             try
             {
                 Debug.Print(robotName);
-                using (var robot = await Robot.NewConnection("Vector-"+robotName))
+                using (var robot = await Robot.NewConnection("Vector-" + robotName))
                 {
                     await robot.Control.RequestControl();
                     await robot.Behavior.SayText(text);
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 Debug.Print(ex.ToString());
             }
@@ -43,21 +44,22 @@ namespace VectorCompanion.Controllers
         {
             try
             {
-                using (var robot = await Robot.NewConnection(robotName))
+                using (var robot = await Robot.NewConnection("Vector-" + robotName))
                 {
                     await robot.Control.RequestControl();
                     switch (actionName)
                     {
-                        case "driveOffcharger":
+                        case "driveoffcharger":
                             await robot.Behavior.DriveOffCharger();
                             break;
-                        case "driveOncharger":
+                        case "driveoncharger":
                             await robot.Behavior.DriveOnCharger();
                             break;
-                        case "dockingWithCube":
+                        case "dockingwithCube":
                             await robot.World.ConnectCube();
-                            if (robot.World.LightCube != null) {
-                                await robot.Behavior.DockWithCube(robot.World.LightCube, numRetries : 3);
+                            if (robot.World.LightCube != null)
+                            {
+                                await robot.Behavior.DockWithCube(robot.World.LightCube, numRetries: 3);
                                 await robot.World.DisconnectCube();
                             }
                             break;
@@ -71,9 +73,9 @@ namespace VectorCompanion.Controllers
                 Debug.Print(ex.ToString());
             }
         }
-        [HttpGet("movement/{actionname}")]
+        [HttpGet("movement/{vitesse}/{actionname}/")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async void movementTodo(string actionName, string robotName)
+        public async void movementTodo(string actionName, string robotName,int vitesse)
         {
             try
             {
@@ -83,7 +85,18 @@ namespace VectorCompanion.Controllers
                     //robot.Behavior.
                     switch (actionName)
                     {
-                        case "": 
+                        case "forward":
+                            await robot.Behavior.DriveStraight(50, 50, true, 3);
+                            break;
+                        case "backward":
+                            await robot.Behavior.DriveStraight(-50, 50, true, 3);
+                            break;
+                        case "left":
+                            await robot.Behavior.TurnInPlace(1);
+                            break;
+                        case "right":
+                            await robot.Behavior.TurnInPlace(-1);
+                            break;
                         default:
                             break;
                     }
