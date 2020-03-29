@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using VectorCompanion.Models;
+using Microsoft.AspNetCore.HttpOverrides;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace VectorCompanion.MobileAppService
@@ -29,12 +30,14 @@ namespace VectorCompanion.MobileAppService
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UseHttpsRedirection();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
